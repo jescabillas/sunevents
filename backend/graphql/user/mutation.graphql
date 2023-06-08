@@ -1,0 +1,13 @@
+extend type Mutation {
+    registerUser(
+        name: String @rules(apply: ["required", "min:2"])
+        email: String @rules(apply: ["required", "email", "unique:users"])
+        password: String @rules(apply: ["required", "min:2", "confirmed"])
+        password_confirmation: String
+    ): UserWithToken!
+    loginUser(
+        email: String @rules(apply: ["required", "email"])
+        password: String @rules(apply: ["required"])
+    ): UserWithToken!
+    logoutUser: String! @guard
+}

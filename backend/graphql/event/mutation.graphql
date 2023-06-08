@@ -1,0 +1,17 @@
+extend type Mutation {
+    createEvent(
+        title: String @rules(apply: ["required", "max:40"])
+        description: String @rules(apply: ["required"])
+        event_date: String @rules(apply: ["required", "date"])
+        hosts: [ID] @rules(apply: ["required"])
+    ): Event @guard
+    updateEvent(
+        id: ID
+        title: String @rules(apply: ["required", "max:40"])
+        description: String @rules(apply: ["required"])
+        event_date: String @rules(apply: ["required", "date"])
+        hosts: [ID] @rules(apply: ["required"])
+    ): Event @guard
+    deleteEvent(id: ID! @eq): String @guard
+    attendEvent(id: ID): String @guard
+}

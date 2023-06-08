@@ -1,0 +1,9 @@
+extend type Query {
+    event(id: ID! @eq): Event @find
+    events(
+        search: String
+        from: String @rules(apply: ["date"])
+        to: String @rules(apply: ["date"])
+    ): [Event]
+    eventsToday(today: String): [Event]
+}

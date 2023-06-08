@@ -1,0 +1,11 @@
+type Event {
+    id: ID!
+    event_date: String!
+    title: String!
+    description: String!
+    hosts: [User!] @belongsToMany
+    created_at: String!
+    updated_at: String
+    user: User! @belongsTo
+    attendants: [User!] @belongsToMany
+}
